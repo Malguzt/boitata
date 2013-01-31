@@ -3,3 +3,4 @@ src/Boitata/settings.py
 *.pot
 *.pyc
 local_settings.py
+.settings/
