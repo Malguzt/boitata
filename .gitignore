@@ -4,3 +4,4 @@ src/Boitata/settings.py
 *.pyc
 local_settings.py
 .settings/
+.settings/org.eclipse.core.resources.prefs
