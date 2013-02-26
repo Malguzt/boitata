@@ -14,4 +14,4 @@ def new_user(request):
             return HttpResponseRedirect('/')
         else:
             form = UserCreationForm()
-        return render_to_response('new_user.html', {'form':form}, context_instance=RequestContext(request))
+        return render_to_response('player/new_user.html', {'form':form}, context_instance=RequestContext(request))
