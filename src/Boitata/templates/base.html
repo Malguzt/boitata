@@ -1,0 +1,26 @@
+<!DOCTPE html>
+<html lang="es">
+    <head>
+        <meta charset='UTF-8'>
+        <title>Boitata - {% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <header>
+            {% block header %}{% endblock %}
+            <nav>
+                <ul>
+                    <a href="/">Inicio</a>
+                </ul>
+                <ul>
+                    <a href="/user/new">Nuevo usuario</a>
+                </ul>
+            </nav>
+        </header>
+        <section class="main">
+            {% block content %}{% endblock %}
+        </section>
+        <footer>
+            {% block footer %}{% endblock %}
+        </footer>
+    </body>
+</html>
