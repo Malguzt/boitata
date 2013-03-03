@@ -4,7 +4,7 @@
 	<h1>Ingresar</h1>
 {% endblock %}
 {% block content %}
-	<form id="login_form" method="post" action="">{% csrf_token %}
+	<form id="login_form" method="post" action="/login/">{% csrf_token %}
 		<table>{{form}}</table>
 		<p><input type="submit" value="Ingresar" /></p>
 	</form>

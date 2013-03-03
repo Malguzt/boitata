@@ -32,3 +32,8 @@ def player_login(request):
     else:
         form = AuthenticationForm()
     return render_to_response('player/login.html', {'form': form}, context_instance=RequestContext(request))
+
+@login_required(login_url='/login')
+def player_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/')
