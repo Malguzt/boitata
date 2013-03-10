@@ -5,7 +5,9 @@
 {% endblock %}
 {% block content %}
 	<form id='new_user_form' method="post" action="">{% csrf_token %}
-		<table>{{ form }}</table>
+		<input id="id_username" class="ui-input-text ui-body-c" type="text" maxlength="30" name="username" placeholder="Nombre">
+        <input id="id_password1" class="ui-input-text ui-body-c" type="password" name="password1" placeholder="Clave">
+        <input id="id_password2" class="ui-input-text ui-body-c" type="password" name="password2" placeholder="Repetila">
 		<p><input type="submit" value="Registar" /></p>
 	</form>
 {% endblock %}
