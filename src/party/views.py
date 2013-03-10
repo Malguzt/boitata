@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/login')
 def new_party(request):
     if request.method == 'POST':
-        theParty = Party(master=request.user)
+        theParty = Party(master=request.user, status='open')
         form = PartyForm(request.POST, instance=theParty)
         if form.is_valid():
             form.save()

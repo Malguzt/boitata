@@ -7,6 +7,7 @@ class Party(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     master = models.ForeignKey(User)
+    status = models.CharField(max_length=10)
     players = models.ManyToManyField(User, through='Character', related_name='characters')
 
 class Scene(models.Model):
