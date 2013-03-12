@@ -14,31 +14,28 @@
     </head>
     <body>
         <header>
-            <section id="user">
+            <section id="user_info">
                 {% if user.username != '' %}
-                <a href="/profile/{{user.username}}" data-role="button" data-inline="true">{{user.username}}</a>
-                <a href="/logout" data-role="button" data-inline="true" data-theme="e">Salir</a>
+                <a href="/profile/{{user.username}}" data-role="button" data-inline="true" data-mini="true">{{user.username}}</a>
+                <a href="/logout" data-role="button" data-inline="true" data-theme="e" data-mini="true">Salir</a>
                 {% else %}
                 <a href="/login" data-role="button">Entrar</a>
                 {% endif %}
             </section>
-            {% block header %}{% endblock %}
             <nav>
-                <ul data-role="listview" >
-                    <li>
-                        <a href="/">Inicio</a>
-                    </li>
+                {% block navigation %}
+                    <a href="/" data-role="button" data-inline="true" data-mini="true">Inicio</a>
                     {% if user.username == '' %}
-                    <li>
-                        <a href="/user/new">Nuevo usuario</a>
-                    </li>
+                        <a href="/user/new" data-role="button" data-inline="true" data-mini="true">Nuevo usuario</a>
                     {% else %}
-                    <li>
-                        <a href="/party/new">Nueva party</a>
-                    </li>
+                        <a href="/party/new" data-role="button" data-inline="true" data-mini="true">Nueva party</a>
                     {% endif %}
-                </ul>
+                {% endblock %}
             </nav>
+            <section class="clear-both"></section>
+            
+            {% block header %}{% endblock %}
+            
         </header>
         <section class="main">
             {% block content %}{% endblock %}

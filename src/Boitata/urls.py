@@ -8,6 +8,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^user/new$', 'player.views.new_user'),
     url(r'^party/new$', 'party.views.new_party'),
+    url(r'^party/(?P<party_id>\d+)$', 'party.views.party'),
+    url(r'^party/add_me/(?P<party_id>\d+)$', 'party.views.add_me'),
     url(r'^$', 'main.views.parties_list'),
     url(r'^login/$', 'player.views.player_login'),
     url(r'^logout/$', 'player.views.player_logout'),

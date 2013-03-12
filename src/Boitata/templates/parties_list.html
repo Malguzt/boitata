@@ -1,13 +1,21 @@
 {% extends 'base.html' %}
 {% block title %}Partidas disponibles{% endblock %}
 {% block header %}
-	<h1>Partidas abiertas</h1>
+    <h1>Partidas abiertas</h1>
+{% endblock %}
+{% block navigation %}
+    {% if user.username == '' %}
+        <a href="/user/new" data-role="button" data-inline="true" data-mini="true">Nuevo usuario</a>
+    {% else %}
+        <a href="/party/new" data-role="button" data-inline="true" data-mini="true">Nueva party</a>
+    {% endif %}
 {% endblock %}
 {% block content %}
-	{% for party in parties %}
-	<ul>
-		<li><strong>{{party.title}}</strong></li>
-		<li>{{party.master}}</li>
-	</ul>
-	{% endfor %}
+<ul data-role="listview" id="parties_list">
+    {% for party in parties %}
+        <li>
+            <strong><a href="/party/{{party.id}}" data-inline="true">{{party.title}}</a></strong> por: <a href="/profile/{{party.master}}" data-inline="true">{{party.master}}</a>
+        </li>
+    {% endfor %}
+</ul>
 {% endblock %}

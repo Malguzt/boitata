@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}{{party.title}}{% endblock %}
+{% block header %}<h1>{{party.title}} ({{party.status}})</h1>{% endblock %}
+{% block content %}
+    <section class="description">{{party.description}}</section>
+	<a href="/party/add_me/{{party.id}}" data-role="button" data-inline="true" data-theme="a">Unirme</a>
+	<ul data-role="listview" id="characters_list">
+	    {% for character in characters %}
+	        <li>
+                <strong><a href="/character/{{character.id}}" data-inline="true">{{character.name}}/{{character.player}}</a></strong>
+	        </li>
+	    {% endfor %}
+	</ul>
+{% endblock %}
