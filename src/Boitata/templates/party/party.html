@@ -11,6 +11,7 @@
                 <strong>
                   <a href="/character/{{character.id}}" data-inline="true">{{character.name}}/{{character.player}}</a> 
                   {% if user == party.master or character.player == user %}
+                    <a href="/character/character/{{character.id}}" data-role="button" data-inline="true">Editar</a>
                     <a href="/character/remove/{{party.id}}/{{character.id}}" data-role="button" data-inline="true">Quitar</a>
                   {% endif %}
                 </strong>
