@@ -2,12 +2,18 @@
 {% block title %}{{party.title}}{% endblock %}
 {% block header %}<h1>{{party.title}} ({{party.status}})</h1>{% endblock %}
 {% block content %}
+	<section class="description" id="master_name"><a href="/profile/{{party.master}}" data-inline="true">{{party.master}}</a></section>
     <section class="description">{{party.description}}</section>
 	<a href="/party/add_me/{{party.id}}" data-role="button" data-inline="true" data-theme="a">Unirme</a>
 	<ul data-role="listview" id="characters_list">
 	    {% for character in characters %}
 	        <li>
-                <strong><a href="/character/{{character.id}}" data-inline="true">{{character.name}}/{{character.player}}</a></strong>
+                <strong>
+                  <a href="/character/{{character.id}}" data-inline="true">{{character.name}}/{{character.player}}</a> 
+                  {% if user == party.master or character.player == user %}
+                    <a href="/character/remove/{{party.id}}/{{character.id}}" data-role="button" data-inline="true">Quitar</a>
+                  {% endif %}
+                </strong>
 	        </li>
 	    {% endfor %}
 	</ul>

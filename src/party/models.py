@@ -25,3 +25,12 @@ class Character(models.Model):
     history = models.TextField()
     player = models.ForeignKey(User)
     party = models.ForeignKey(Party)
+
+class Round(models.Model):
+    number = models.CharField(max_length = 10)
+
+class CharacterSheet(models.Model):
+    character = models.ForeignKey(Character)
+
+class Team(models.Model):
+    name = models.CharField(max_length=50)

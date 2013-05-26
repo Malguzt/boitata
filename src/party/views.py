@@ -28,3 +28,8 @@ def add_me(request, party_id):
     new_character = Character.objects.create(party=this_party, player=request.user)
     new_character.save()
     return HttpResponseRedirect('/party/' + party_id)
+
+def remove_character(request, party_id, character_id):
+    this_character = get_object_or_404(Character, pk=character_id)
+    this_character.delete()
+    return HttpResponseRedirect('/party/' + party_id)
