@@ -5,17 +5,19 @@
 	<section class="description" id="master_name"><a href="/profile/{{party.master}}" data-inline="true">{{party.master}}</a></section>
     <section class="description">{{party.description}}</section>
 	<a href="/party/add_me/{{party.id}}" data-role="button" data-inline="true" data-theme="a">Unirme</a>
-	<ul data-role="listview" id="characters_list">
-	    {% for character in characters %}
-	        <li>
-                <strong>
-                  <a href="/character/{{character.id}}" data-inline="true">{{character.name}}/{{character.player}}</a> 
+
+  <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
+    {% for character in characters %}
+          <div data-role="collapsible">
+                <h3>{{character.name}}/{{character.player}}</h3>
+                <p>
+                  <a href="/character/{{character.id}}" data-role="button" data-inline="true" data-mini="true">Ver</a>
                   {% if user == party.master or character.player == user %}
-                    <a href="/character/character/{{character.id}}" data-role="button" data-inline="true">Editar</a>
-                    <a href="/character/remove/{{party.id}}/{{character.id}}" data-role="button" data-inline="true">Quitar</a>
+                    <a href="/character/edit/{{character.id}}" data-role="button" data-inline="true" data-mini="true">Editar</a>
+                    <a href="/character/remove/{{party.id}}/{{character.id}}" data-role="button" data-inline="true" data-mini="true">Quitar</a>
                   {% endif %}
-                </strong>
-	        </li>
-	    {% endfor %}
-	</ul>
+                </p>
+          </div>
+      {% endfor %}
+  </div>
 {% endblock %}

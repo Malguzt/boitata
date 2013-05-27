@@ -1,5 +1,5 @@
 from party.models import Party, Character
-from party.forms import PartyForm
+from party.forms import PartyForm, CharacterForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template.context import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
@@ -33,3 +33,18 @@ def remove_character(request, party_id, character_id):
     this_character = get_object_or_404(Character, pk=character_id)
     this_character.delete()
     return HttpResponseRedirect('/party/' + party_id)
+
+def edit_character(request, character_id):
+    this_character = get_object_or_404(Character, pk=character_id)
+    if request.method == 'POST':
+        form = CharacterForm(request.POST, instance=this_character)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/character/' + character_id)
+    else:
+        form = CharacterForm(instance=this_character)
+    return render_to_response('character/edit.html', {'form':form}, context_instance=RequestContext(request))
+
+def view_character(request, character_id):
+    this_character = get_object_or_404(Character, pk=character_id)
+    return render_to_response('character/view.html', {'character':this_character}, context_instance=RequestContext(request))

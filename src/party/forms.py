@@ -22,3 +22,7 @@ class NarrationForm(ModelForm):
 class SceneForm(ModelForm):
     class Meta:
         model = Scene
+
+class CharacterForm(ModelForm):
+    class Meta:
+        model = Character
