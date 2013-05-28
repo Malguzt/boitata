@@ -1,7 +1,7 @@
 {% extends 'party/base_party.html' %}
-{% block title %}Edita tu personaje{% endblock %}
+{% block title %}Nueva escena{% endblock %}
 {% block content %}
-	<form id='edit_character' method="post" action="">{% csrf_token %}
+	<form id='add_scene' method="post" action="">{% csrf_token %}
 		{{form.as_p}}
 		<p><input type="submit" value="Guardar" /></p>
 	</form>

@@ -4,20 +4,40 @@
 {% block content %}
 	<section class="description" id="master_name"><a href="/profile/{{party.master}}" data-inline="true">{{party.master}}</a></section>
     <section class="description">{{party.description}}</section>
-	<a href="/party/add_me/{{party.id}}" data-role="button" data-inline="true" data-theme="a">Unirme</a>
+    {% if user != party.master %}
+      <a href="/party/add_me/{{party.id}}" data-role="button" data-inline="true" data-theme="a" data-mini="true">Unirme</a>
+    {% else %}
+      <a href="/scene/{{party.id}}" data-role="button" data-inline="true" data-theme="a" data-mini="true">Nueva escena</a>
+    {% endif %}
 
-  <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
+  <section data-role="collapsible-set" data-theme="c" data-content-theme="d">
+    <h2>Escenas</h2>
+    {% for scene in scenes %}
+      <section data-role="collapsible">
+        <h3>{{scene.title}}</h3>
+        <p>
+          <a href="/scene/{{scene.id}}" data-role="button" data-inline="true" data-mini="true">Ver</a>
+          {% if user == party.master or character.player == user %}
+            <a href="/scene/edit/{{scene.id}}" data-role="button" data-inline="true" data-mini="true">Editar</a>
+            <a href="/scene/remove/{{party.id}}/{{scene.id}}" data-role="button" data-inline="true" data-mini="true">Quitar</a>
+          {% endif %}
+        </p>
+      </section>
+    {% endfor %}
+  </section>
+  <section data-role="collapsible-set" data-theme="c" data-content-theme="d">
+    <h2>Personajes</h2>
     {% for character in characters %}
-          <div data-role="collapsible">
-                <h3>{{character.name}}/{{character.player}}</h3>
-                <p>
-                  <a href="/character/{{character.id}}" data-role="button" data-inline="true" data-mini="true">Ver</a>
-                  {% if user == party.master or character.player == user %}
-                    <a href="/character/edit/{{character.id}}" data-role="button" data-inline="true" data-mini="true">Editar</a>
-                    <a href="/character/remove/{{party.id}}/{{character.id}}" data-role="button" data-inline="true" data-mini="true">Quitar</a>
-                  {% endif %}
-                </p>
-          </div>
-      {% endfor %}
-  </div>
+      <section data-role="collapsible">
+        <h3>{{character.name}}/{{character.player}}</h3>
+        <p>
+          <a href="/character/{{character.id}}" data-role="button" data-inline="true" data-mini="true">Ver</a>
+          {% if user == party.master or character.player == user %}
+            <a href="/character/edit/{{character.id}}" data-role="button" data-inline="true" data-mini="true">Editar</a>
+            <a href="/character/remove/{{party.id}}/{{character.id}}" data-role="button" data-inline="true" data-mini="true">Quitar</a>
+          {% endif %}
+        </p>
+      </section>
+    {% endfor %}
+  </section>
 {% endblock %}

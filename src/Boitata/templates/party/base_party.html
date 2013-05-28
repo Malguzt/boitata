@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block navigation %}
+    <a href="/" data-role="button" data-inline="true" data-mini="true">Inicio</a>
+    <a href="/party/{{party.id}}" data-role="button" data-inline="true" data-mini="true">{{party.title}}</a>
+{% endblock %}

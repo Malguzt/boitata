@@ -1,9 +1,5 @@
-{% extends 'base.html' %}
+{% extends 'party/base_party.html' %}
 {% block title %}{{character.name}}{% endblock %}
-{% block navigation %}
-    <a href="/" data-role="button" data-inline="true" data-mini="true">Inicio</a>
-    <a href="/party/{{character.party.id}}" data-role="button" data-inline="true" data-mini="true">{{character.party.title}}</a>
-{% endblock %}
 {% block content %}
   <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
     <div data-role="collapsible">

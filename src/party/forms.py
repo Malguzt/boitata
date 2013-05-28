@@ -20,9 +20,15 @@ class NarrationForm(ModelForm):
         model = Narration
 
 class SceneForm(ModelForm):
+    title = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder':'Titulo'}))
+    description = forms.CharField(label='', widget=forms.Textarea(attrs={'placeholder':'Descripción'}))
     class Meta:
         model = Scene
+        fields = ('title', 'description')
 
 class CharacterForm(ModelForm):
+    name = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder':'Su nombre'}))
+    history = forms.CharField(label='', widget=forms.Textarea(attrs={'placeholder':'Su historia'}))
     class Meta:
         model = Character
+        fields = ('name', 'history')
