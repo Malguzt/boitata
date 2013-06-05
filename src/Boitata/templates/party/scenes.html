@@ -1,0 +1,20 @@
+{% extends 'party/base_party.html' %}
+{% block title %}{{party.title}} / Escenas{% endblock %}
+{% block header %}<h1>{{party.title}}</h1>{% endblock %}
+{% block content %}
+  <section data-role="collapsible-set" data-theme="c" data-content-theme="d">
+  <h2>Escenas</h2>
+    {% for scene in scenes %}
+      <section data-role="collapsible">
+        <h3>{{scene.title}}</h3>
+        <p>
+          <a href="/scene/{{scene.id}}" data-role="button" data-inline="true" data-mini="true">Ver</a>
+          {% if user == party.master or character.player == user %}
+            <a href="/scene/edit/{{scene.id}}" data-role="button" data-inline="true" data-mini="true">Editar</a>
+            <a href="/scene/remove/{{party.id}}/{{scene.id}}" data-role="button" data-inline="true" data-mini="true">Quitar</a>
+          {% endif %}
+        </p>
+      </section>
+    {% endfor %}
+  </section>
+{% endblock %}
