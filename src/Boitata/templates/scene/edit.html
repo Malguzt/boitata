@@ -1,0 +1,8 @@
+{% extends 'party/base_party.html' %}
+{% block title %}Editar "{{scene.title}}"{% endblock %}
+{% block content %}
+	<form id='edit_scene' method="post" action="">{% csrf_token %}
+		{{form.as_p}}
+		<p><input type="submit" value="Guardar" /></p>
+	</form>
+{% endblock %}

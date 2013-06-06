@@ -11,6 +11,18 @@ def view_scene(request, scene_id):
   return render_to_response('scene/view.html', {'scene':this_scene, 'party':this_scene.party}, context_instance=RequestContext(request))
 
 @login_required(login_url='/login')
+def edit_scene(request, scene_id):
+  this_scene = get_object_or_404(Scene, pk=scene_id)
+  if request.method == 'POST':
+    form = SceneForm(request.POST, instance=this_scene)
+    if form.is_valid():
+      form.save()
+      return HttpResponseRedirect('/scene/' + scene_id)
+  else:
+    form = SceneForm(instance=this_scene)
+  return render_to_response('scene/edit.html', {'form':form, 'party':this_scene.party}, context_instance=RequestContext(request))
+
+@login_required(login_url='/login')
 def add_scene(request, party_id):
   this_party = get_object_or_404(Party, pk=party_id)
   if request.method == 'POST':
